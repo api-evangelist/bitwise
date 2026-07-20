@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/bitwise-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: API key sent in the Authorization header. Request a key from api@bitwiseinvestments.com.
+  sources:
+  - openapi/bitwise-openapi.yml

@@ -1,0 +1,200 @@
+openapi: 3.1.0
+info:
+  title: Bitwise ETFs Indexes API
+  version: v1
+  description: Read-only market-data API for Bitwise indexes, ETFs, and fund data. Returns index metadata, historical daily index values, index constituents with prices/supplies/weights, per-fund data (market price, NAV, AUM, holdings, crypto-per-share, performance), and ETF listings and details. Endpoints and the authentication model are derived from the provider's published Postman collection at https://developers.bitwiseinvestments.com/; base host and error envelope were confirmed by live probe of https://api.bitwiseinvestments.com.
+  contact:
+    name: Bitwise API Support
+    email: api@bitwiseinvestments.com
+    url: https://developers.bitwiseinvestments.com/
+  termsOfService: https://bitwiseinvestments.com/terms-of-service
+servers:
+- url: https://api.bitwiseinvestments.com
+  description: Production
+security:
+- apiKeyAuth: []
+tags:
+- name: Indexes
+  description: Bitwise crypto index metadata, history, and constituents.
+paths:
+  /api/v1/indexes:
+    get:
+      operationId: listIndexes
+      tags:
+      - Indexes
+      summary: List indexes
+      description: Returns metadata about available indexes, including their names, inception dates, descriptions, and constituent assets.
+      responses:
+        '200':
+          description: Index metadata list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Index'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/v1/indexes/{indexName}/history:
+    get:
+      operationId: getIndexHistory
+      tags:
+      - Indexes
+      summary: Get index history
+      description: Returns historical daily index values. Each element contains a date and the corresponding index value. By default all values are included from 2017-01-01 (or index inception), including backtested data. Results can be filtered by date range and can exclude backtested values.
+      parameters:
+      - name: indexName
+        in: path
+        required: true
+        description: Index identifier (e.g. DEFI).
+        schema:
+          type: string
+          example: DEFI
+      - name: startDate
+        in: query
+        required: false
+        description: Earliest date to include (YYYY-MM-DD).
+        schema:
+          type: string
+          format: date
+      - name: endDate
+        in: query
+        required: false
+        description: Latest date to include (YYYY-MM-DD).
+        schema:
+          type: string
+          format: date
+      - name: excludeBacktested
+        in: query
+        required: false
+        description: Exclude backtested values from the series.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Daily index value series.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IndexHistoryPoint'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/v1/indexes/{indexName}/constituents:
+    get:
+      operationId: getIndexConstituents
+      tags:
+      - Indexes
+      summary: Get index constituents
+      description: Returns current and past index information including index value and constituent assets with their prices, supplies, and weights. A timestamp may be supplied to retrieve data from a particular point in time; omit it to receive the most recent available data.
+      parameters:
+      - name: indexName
+        in: path
+        required: true
+        description: Index identifier (e.g. DEFI).
+        schema:
+          type: string
+          example: DEFI
+      - name: timestamp
+        in: query
+        required: false
+        description: Point-in-time to retrieve constituents for.
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Index value plus weighted constituents.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IndexConstituents'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    IndexConstituents:
+      type: object
+      properties:
+        value:
+          type: number
+        timestamp:
+          type: string
+          format: date-time
+        constituents:
+          type: array
+          items:
+            type: object
+            properties:
+              asset:
+                type: string
+              price:
+                type: number
+              supply:
+                type: number
+              weight:
+                type: number
+    Index:
+      type: object
+      description: Index metadata (shape not published; representative fields).
+      properties:
+        name:
+          type: string
+        inceptionDate:
+          type: string
+          format: date
+        description:
+          type: string
+        constituents:
+          type: array
+          items:
+            type: string
+    IndexHistoryPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        value:
+          type: number
+    Error:
+      type: object
+      description: Bitwise error envelope (not RFC 9457).
+      properties:
+        message:
+          type: string
+        id:
+          type: string
+          description: Machine-readable error identifier.
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Authentication credentials were missing or incorrect.
+            id: unauthorized_request
+            errors:
+            - field: apiKey
+              message: Invalid or missing API key
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key sent in the Authorization header. Request a key from api@bitwiseinvestments.com.
+x-apievangelist-generated: '2026-07-18'
+x-apievangelist-method: derived
+x-apievangelist-source: postman/bitwise-collection.json (published collection https://developers.bitwiseinvestments.com/)

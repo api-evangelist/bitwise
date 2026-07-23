@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: Bitwise ETFs Funds API
+  version: v1
+  description: Read-only market-data API for Bitwise indexes, ETFs, and fund data. Returns index metadata, historical daily index values, index constituents with prices/supplies/weights, per-fund data (market price, NAV, AUM, holdings, crypto-per-share, performance), and ETF listings and details. Endpoints and the authentication model are derived from the provider's published Postman collection at https://developers.bitwiseinvestments.com/; base host and error envelope were confirmed by live probe of https://api.bitwiseinvestments.com.
+  contact:
+    name: Bitwise API Support
+    email: api@bitwiseinvestments.com
+    url: https://developers.bitwiseinvestments.com/
+  termsOfService: https://bitwiseinvestments.com/terms-of-service
+servers:
+- url: https://api.bitwiseinvestments.com
+  description: Production
+security:
+- apiKeyAuth: []
+tags:
+- name: Funds
+  description: Per-fund market data (NAV, AUM, holdings, performance).
+paths:
+  /api/v1/fundData/{fundName}:
+    get:
+      operationId: getFundData
+      tags:
+      - Funds
+      summary: Get fund data
+      description: Returns data for the specified fund, including market price, intra-day NAV, previous-day NAV, AUM, price change, performance, shares outstanding, holdings, crypto-per-share, and return.
+      parameters:
+      - name: fundName
+        in: path
+        required: true
+        description: Fund identifier (e.g. defiFund).
+        schema:
+          type: string
+          example: defiFund
+      responses:
+        '200':
+          description: Fund data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FundData'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Authentication credentials were missing or incorrect.
+            id: unauthorized_request
+            errors:
+            - field: apiKey
+              message: Invalid or missing API key
+  schemas:
+    Error:
+      type: object
+      description: Bitwise error envelope (not RFC 9457).
+      properties:
+        message:
+          type: string
+        id:
+          type: string
+          description: Machine-readable error identifier.
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+    FundData:
+      type: object
+      properties:
+        marketPrice:
+          type: number
+        intraDayNav:
+          type: number
+        previousDayNav:
+          type: number
+        aum:
+          type: number
+        priceChange:
+          type: number
+        sharesOutstanding:
+          type: number
+        cryptoPerShare:
+          type: number
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key sent in the Authorization header. Request a key from api@bitwiseinvestments.com.
+x-apievangelist-generated: '2026-07-18'
+x-apievangelist-method: derived
+x-apievangelist-source: postman/bitwise-collection.json (published collection https://developers.bitwiseinvestments.com/)

@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: derived
+source: >-
+  Derived from openapi/bitwise-openapi.yml responses and a live probe of
+  https://api.bitwiseinvestments.com/api/v1/indexes (401 envelope observed
+  verbatim).
+format: custom
+envelope:
+  description: >-
+    Bitwise returns a JSON error envelope (NOT RFC 9457 application/problem+json).
+    Content-Type is application/json. The envelope carries a human-readable
+    message, a machine-readable id, and an errors[] array of field-level details.
+  fields:
+    message: Human-readable summary of the error.
+    id: Machine-readable error identifier (e.g. unauthorized_request).
+    errors: Array of { field, message } detail objects.
+  example:
+    message: Authentication credentials were missing or incorrect.
+    id: unauthorized_request
+    errors:
+      - field: apiKey
+        message: Invalid or missing API key
+problems:
+  - status: 401
+    id: unauthorized_request
+    title: Authentication credentials were missing or incorrect
+    remediation: >-
+      Send a valid API key in the Authorization header. Request a key from
+      api@bitwiseinvestments.com. Observed on every path when the key is absent
+      or invalid (auth is enforced before routing).
+    observed: true
+    source_operation: openapi/bitwise-openapi.yml#listIndexes

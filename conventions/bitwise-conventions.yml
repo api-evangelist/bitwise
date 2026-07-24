@@ -1,0 +1,58 @@
+generated: '2026-07-18'
+method: derived
+source: >-
+  Derived from openapi/bitwise-openapi.yml, the published Postman collection, and
+  live probes of https://api.bitwiseinvestments.com.
+authentication:
+  style: api-key
+  location: header
+  header: Authorization
+  notes: >-
+    API key sent in the Authorization header (value is the key itself). Keys are
+    issued on request via api@bitwiseinvestments.com. No OAuth, no scopes. Auth is
+    enforced before routing (any path returns 401 without a valid key).
+  see: authentication/bitwise-authentication.yml
+idempotency:
+  supported: false
+  notes: >-
+    All documented operations are read-only GET requests; the provider documents
+    no idempotency-key mechanism. Not applicable.
+pagination:
+  style: none-documented
+  notes: >-
+    No cursor/offset pagination is documented. Historical index series are
+    filtered by date range instead.
+  parameters:
+    - name: startDate
+      applies_to: GET /api/v1/indexes/{indexName}/history
+    - name: endDate
+      applies_to: GET /api/v1/indexes/{indexName}/history
+    - name: excludeBacktested
+      applies_to: GET /api/v1/indexes/{indexName}/history
+    - name: timestamp
+      applies_to: GET /api/v1/indexes/{indexName}/constituents
+    - name: date
+      applies_to: GET /api/v1/etf/{etfName}
+point_in_time:
+  notes: >-
+    Constituents and ETF data support as-of retrieval via a timestamp/date query
+    parameter; omit to get the latest available data.
+versioning:
+  scheme: uri-path
+  current: v1
+  notes: Version is carried in the URL path (/api/v1/...).
+error_envelope:
+  format: custom
+  shape: '{ message, id, errors[{ field, message }] }'
+  content_type: application/json
+  see: errors/bitwise-problem-types.yml
+rate_limiting:
+  signaling: none-observed
+  notes: >-
+    No RateLimit/Retry-After headers were returned on unauthenticated probes;
+    any limits may be applied per-key and are not publicly documented.
+transport:
+  tls: enforced
+  hsts: true
+  cdn: cloudflare
+  cors: 'access-control-allow-origin: *'

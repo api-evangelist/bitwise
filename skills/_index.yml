@@ -1,0 +1,12 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/bitwise-openapi.yml
+skills:
+  - file: bitwise-index-analytics.md
+    name: Pull a Bitwise index's value history and constituents
+    api: openapi/bitwise-openapi.yml
+    operations: [listIndexes, getIndexHistory, getIndexConstituents]
+  - file: bitwise-fund-and-etf-data.md
+    name: Look up Bitwise fund and ETF data
+    api: openapi/bitwise-openapi.yml
+    operations: [getFundData, listEtfs, getEtf]

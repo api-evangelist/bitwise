@@ -1,0 +1,24 @@
+# Bitwise
+
+> Bitwise Asset Management is a crypto-focused investment manager offering index funds, ETFs, SMAs, and staking products. Its read-only market-data API exposes Bitwise index metadata, historical daily index values, index constituents, per-fund data (NAV, AUM, holdings), and ETF listings, authenticated with an API key in the Authorization header.
+
+## APIs
+- [Bitwise API developer portal](https://developers.bitwiseinvestments.com/): Postman-published reference for indexes, ETFs, and fund data. Base URL https://api.bitwiseinvestments.com. Request keys from api@bitwiseinvestments.com.
+
+## Specs
+- [OpenAPI (derived)](openapi/bitwise-openapi.yml): 6 read-only GET operations across indexes, funds, and ETFs.
+- [Postman collection](postman/bitwise-collection.json): the provider's published collection.
+- [Authentication profile](authentication/bitwise-authentication.yml)
+- [Error catalog](errors/bitwise-problem-types.yml)
+- [Conventions](conventions/bitwise-conventions.yml)
+- [Data model](data-model/bitwise-data-model.yml)
+- [Conformance](conformance/bitwise-conformance.yml)
+- [Lifecycle](lifecycle/bitwise-lifecycle.yml)
+- [MCP tools (candidate)](mcp/bitwise-mcp.yml)
+
+## Docs
+- [Developer portal](https://developers.bitwiseinvestments.com/)
+- [Website](https://bitwiseinvestments.com/)
+- [Insights / research](https://bitwiseinvestments.com/crypto-market-insights)
+- [Terms of Service](https://bitwiseinvestments.com/terms-of-service)
+- [Privacy Policy](https://bitwiseinvestments.com/privacy-policy)

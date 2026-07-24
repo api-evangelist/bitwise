@@ -1,0 +1,26 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/bitwise-openapi.yml
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 security scheme; API-key auth only.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use a custom JSON envelope ({message,id,errors[]}) with
+      application/json, not application/problem+json.
+  - id: api-key-auth
+    conforms: true
+    evidence: apiKey security scheme in the Authorization header.
+  - id: rest-json
+    conforms: true
+    evidence: Resource-oriented GET endpoints returning application/json.
+  - id: uri-path-versioning
+    conforms: true
+    evidence: Version carried in the URL path (/api/v1/...).
+  - id: tls-hsts
+    conforms: true
+    evidence: HTTPS enforced with Strict-Transport-Security (max-age 31536000, preload).

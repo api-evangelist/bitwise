@@ -1,0 +1,18 @@
+{
+  "provider": "bitwise",
+  "sources": [
+    "bitwise-etfs-api-openapi.yml",
+    "bitwise-funds-api-openapi.yml",
+    "bitwise-indexes-api-openapi.yml"
+  ],
+  "outputs": [
+    "bitwise-etfs-api-openapi.yml",
+    "bitwise-funds-api-openapi.yml",
+    "bitwise-indexes-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

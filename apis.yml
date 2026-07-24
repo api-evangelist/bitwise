@@ -1,9 +1,31 @@
 aid: bitwise
 name: Bitwise
-description: 'Bitwise is a company surfaced as a portfolio company of electric-capital, general-catalyst
-  and added to the API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a
-  lead awaiting the enrichment pipeline.'
+description: >-
+  Bitwise Asset Management is a crypto-focused investment manager (founded 2017,
+  offices in San Francisco, New York, London, and Frankfurt) offering crypto
+  index funds, ETFs, separately managed accounts, private funds, and staking
+  products across 70+ vehicles including the Bitwise 10 Crypto Index (BITW) and
+  spot Bitcoin (BITB) and Ethereum (ETHW) ETFs. Bitwise publishes a read-only
+  market-data API for its indexes, ETFs, and fund data via a public Postman
+  developer portal, covering index metadata, historical daily index values,
+  index constituents (prices/supplies/weights), and per-fund data (NAV, AUM,
+  holdings, crypto-per-share, performance). API keys are issued on request. This
+  profile was enriched by the API Evangelist pipeline from the provider's public
+  developer surface.
 url: https://raw.githubusercontent.com/api-evangelist/bitwise/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://bitwiseinvestments.com/favicon.ico
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -13,16 +35,129 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Fintech
-apis: []
+- Cryptocurrency
+- Asset Management
+- Market Data
+- Index Funds
+- ETFs
+- Financial Services
+apis:
+- aid: bitwise:bitwise-etfs-api
+  name: Bitwise ETFs API
+  description: Bitwise exchange-traded fund listings and details.
+  humanURL: https://developers.bitwiseinvestments.com/
+  baseURL: https://api.bitwiseinvestments.com
+  tags:
+  - ETFs
+  properties:
+  - type: OpenAPI
+    url: openapi/bitwise-etfs-api-openapi.yml
+  - type: Authentication
+    url: authentication/bitwise-authentication.yml
+  - type: ErrorCatalog
+    url: errors/bitwise-problem-types.yml
+  - type: Conventions
+    url: conventions/bitwise-conventions.yml
+  - type: DataModel
+    url: data-model/bitwise-data-model.yml
+  - type: Conformance
+    url: conformance/bitwise-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/bitwise-lifecycle.yml
+  - type: Postman
+    url: https://developers.bitwiseinvestments.com/
+- aid: bitwise:bitwise-funds-api
+  name: Bitwise Funds API
+  description: Per-fund market data (NAV, AUM, holdings, performance).
+  humanURL: https://developers.bitwiseinvestments.com/
+  baseURL: https://api.bitwiseinvestments.com
+  tags:
+  - Funds
+  properties:
+  - type: OpenAPI
+    url: openapi/bitwise-funds-api-openapi.yml
+  - type: Authentication
+    url: authentication/bitwise-authentication.yml
+  - type: ErrorCatalog
+    url: errors/bitwise-problem-types.yml
+  - type: Conventions
+    url: conventions/bitwise-conventions.yml
+  - type: DataModel
+    url: data-model/bitwise-data-model.yml
+  - type: Conformance
+    url: conformance/bitwise-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/bitwise-lifecycle.yml
+  - type: Postman
+    url: https://developers.bitwiseinvestments.com/
+- aid: bitwise:bitwise-indexes-api
+  name: Bitwise Indexes API
+  description: Bitwise crypto index metadata, history, and constituents.
+  humanURL: https://developers.bitwiseinvestments.com/
+  baseURL: https://api.bitwiseinvestments.com
+  tags:
+  - Indexes
+  properties:
+  - type: OpenAPI
+    url: openapi/bitwise-indexes-api-openapi.yml
+  - type: Authentication
+    url: authentication/bitwise-authentication.yml
+  - type: ErrorCatalog
+    url: errors/bitwise-problem-types.yml
+  - type: Conventions
+    url: conventions/bitwise-conventions.yml
+  - type: DataModel
+    url: data-model/bitwise-data-model.yml
+  - type: Conformance
+    url: conformance/bitwise-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/bitwise-lifecycle.yml
+  - type: Postman
+    url: https://developers.bitwiseinvestments.com/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/bitwise-agentic-access.yml
+- type: DomainSecurity
+  url: security/bitwise-domain-security.yml
 - type: Website
   url: https://bitwiseinvestments.com/
+- type: DeveloperPortal
+  url: https://developers.bitwiseinvestments.com/
+- type: Documentation
+  url: https://developers.bitwiseinvestments.com/
+- type: APIReference
+  url: https://developers.bitwiseinvestments.com/
+- type: GettingStarted
+  url: https://developers.bitwiseinvestments.com/
+- type: Postman
+  url: https://developers.bitwiseinvestments.com/
+- type: Support
+  url: mailto:api@bitwiseinvestments.com
+- type: Blog
+  url: https://bitwiseinvestments.com/crypto-market-insights
+- type: SignUp
+  url: https://experts.bitwiseinvestments.com/sign-up
+- type: Login
+  url: https://app.bitwiseinvestments.com/investor-portal
+- type: TermsOfService
+  url: https://bitwiseinvestments.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://bitwiseinvestments.com/privacy-policy
+- type: LLMsTxt
+  url: llms/bitwise-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

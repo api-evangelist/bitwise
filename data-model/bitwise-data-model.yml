@@ -1,0 +1,37 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/bitwise-openapi.yml
+entities:
+  - name: Index
+    description: A Bitwise crypto index (e.g. DEFI, BITW 10 Crypto Index).
+    identifier: name
+    operations: [listIndexes, getIndexHistory, getIndexConstituents]
+  - name: IndexHistoryPoint
+    description: A single dated index value in an index's history series.
+    identifier: date
+    operations: [getIndexHistory]
+  - name: Constituent
+    description: A weighted asset within an index (price, supply, weight).
+    identifier: asset
+    operations: [getIndexConstituents]
+  - name: Fund
+    description: A Bitwise fund with market/NAV/AUM/holdings data.
+    identifier: fundName
+    operations: [getFundData]
+  - name: Etf
+    description: A Bitwise exchange-traded fund (e.g. BITB, ETHW).
+    identifier: symbol
+    operations: [listEtfs, getEtf]
+relationships:
+  - from: Index
+    to: IndexHistoryPoint
+    type: has_many
+    via: history
+  - from: Index
+    to: Constituent
+    type: has_many
+    via: constituents
+  - from: Constituent
+    to: Index
+    type: belongs_to
+    via: indexName

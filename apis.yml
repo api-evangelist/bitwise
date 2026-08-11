@@ -124,6 +124,10 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: MCPServer
+  url: mcp/bitwise-mcp.yml
+- type: Overlay
+  url: overlays/bitwise-openapi-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/bitwise-agentic-access.yml
 - type: DomainSecurity

@@ -1,0 +1,203 @@
+{
+  "item": [
+    {
+      "id": "c56683b5-4122-4aaa-a9f4-ccfaa48181dc",
+      "name": "Funds",
+      "description": {
+        "content": "Per-fund market data (NAV, AUM, holdings, performance).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "220ab00b-fdfa-431b-8610-56bda8a01d7c",
+          "name": "Get fund data",
+          "request": {
+            "name": "Get fund data",
+            "description": {
+              "content": "Returns data for the specified fund, including market price, intra-day NAV, previous-day NAV, AUM, price change, performance, shares outstanding, holdings, crypto-per-share, and return.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "fundData",
+                ":fundName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fundName",
+                  "description": "(Required) Fund identifier (e.g. defiFund)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "110f524c-a111-4ef3-9af0-70e15a4998aa",
+              "name": "Fund data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "fundData",
+                    ":fundName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fundName",
+                      "description": "(Required) Fund identifier (e.g. defiFund)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"marketPrice\": 2849.5983850529537,\n  \"intraDayNav\": 5188.2787743207955,\n  \"previousDayNav\": 7637.72962760753,\n  \"aum\": 7459.465983437757,\n  \"priceChange\": 1755.7127947065276,\n  \"sharesOutstanding\": 8056.030594928745,\n  \"cryptoPerShare\": 8474.901142301622\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11d26083-ad74-41f8-bc5a-a4ee4bd01650",
+              "name": "Authentication credentials were missing or incorrect.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "fundData",
+                    ":fundName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fundName",
+                      "description": "(Required) Fund identifier (e.g. defiFund)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication credentials were missing or incorrect.\",\n  \"id\": \"unauthorized_request\",\n  \"errors\": [\n    {\n      \"field\": \"apiKey\",\n      \"message\": \"Invalid or missing API key\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.bitwiseinvestments.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cd11babe-b752-4f62-86ea-abee4f19bd44",
+    "name": "Bitwise ETFs Funds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only market-data API for Bitwise indexes, ETFs, and fund data. Returns index metadata, historical daily index values, index constituents with prices/supplies/weights, per-fund data (market price, NAV, AUM, holdings, crypto-per-share, performance), and ETF listings and details. Endpoints and the authentication model are derived from the provider's published Postman collection at https://developers.bitwiseinvestments.com/; base host and error envelope were confirmed by live probe of https://api.bitwiseinvestments.com.\n\nContact Support:\n Name: Bitwise API Support\n Email: api@bitwiseinvestments.com",
+      "type": "text/plain"
+    }
+  }
+}

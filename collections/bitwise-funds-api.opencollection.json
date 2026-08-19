@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bitwise ETFs Funds API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Funds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get fund data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bitwiseinvestments.com/api/v1/fundData/:fundName",
+            "params": [
+              {
+                "name": "fundName",
+                "value": "",
+                "type": "path",
+                "description": "Fund identifier (e.g. defiFund)."
+              }
+            ]
+          },
+          "docs": "Returns data for the specified fund, including market price, intra-day NAV, previous-day NAV, AUM, price change, performance, shares outstanding, holdings, crypto-per-share, and return."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

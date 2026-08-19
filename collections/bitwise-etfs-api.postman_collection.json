@@ -1,0 +1,347 @@
+{
+  "item": [
+    {
+      "id": "27e42d96-f0cb-4121-9e68-ba342e873e8a",
+      "name": "ETFs",
+      "description": {
+        "content": "Bitwise exchange-traded fund listings and details.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb18a194-2baa-4228-90de-0ce9af66a695",
+          "name": "List ETFs",
+          "request": {
+            "name": "List ETFs",
+            "description": {
+              "content": "Returns a list of all supported ETFs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "etfs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5151ea43-43a2-4187-8c10-b05bb695e24e",
+              "name": "Supported ETFs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "etfs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"symbol\": \"string\",\n    \"name\": \"string\",\n    \"date\": \"2010-03-07\"\n  },\n  {\n    \"symbol\": \"string\",\n    \"name\": \"string\",\n    \"date\": \"1987-06-03\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "071260f4-f691-4ca4-bfb1-f34893f006b6",
+              "name": "Authentication credentials were missing or incorrect.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "etfs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication credentials were missing or incorrect.\",\n  \"id\": \"unauthorized_request\",\n  \"errors\": [\n    {\n      \"field\": \"apiKey\",\n      \"message\": \"Invalid or missing API key\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2436eb1a-dfd9-4860-95ef-ef1de975d158",
+          "name": "Get ETF",
+          "request": {
+            "name": "Get ETF",
+            "description": {
+              "content": "Retrieves ETF data for a specified fund symbol and optional date. If no date is provided it defaults to the current date and returns comprehensive fund information including pricing, holdings, and metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "etf",
+                ":etfName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "As-of date (YYYY-MM-DD); defaults to today."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "etfName",
+                  "description": "(Required) ETF ticker symbol (e.g. BITB)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36753588-e5c3-4447-9999-2904bf536362",
+              "name": "ETF data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "etf",
+                    ":etfName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "etfName",
+                      "description": "(Required) ETF ticker symbol (e.g. BITB)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"symbol\": \"string\",\n  \"name\": \"string\",\n  \"date\": \"1964-03-19\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44d0ecfb-bdfd-4801-8d95-3a236f744c02",
+              "name": "Authentication credentials were missing or incorrect.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "etf",
+                    ":etfName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "etfName",
+                      "description": "(Required) ETF ticker symbol (e.g. BITB)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication credentials were missing or incorrect.\",\n  \"id\": \"unauthorized_request\",\n  \"errors\": [\n    {\n      \"field\": \"apiKey\",\n      \"message\": \"Invalid or missing API key\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.bitwiseinvestments.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2ac6304f-e7b7-42df-8b47-fd6dd985949d",
+    "name": "Bitwise ETFs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only market-data API for Bitwise indexes, ETFs, and fund data. Returns index metadata, historical daily index values, index constituents with prices/supplies/weights, per-fund data (market price, NAV, AUM, holdings, crypto-per-share, performance), and ETF listings and details. Endpoints and the authentication model are derived from the provider's published Postman collection at https://developers.bitwiseinvestments.com/; base host and error envelope were confirmed by live probe of https://api.bitwiseinvestments.com.\n\nContact Support:\n Name: Bitwise API Support\n Email: api@bitwiseinvestments.com",
+      "type": "text/plain"
+    }
+  }
+}

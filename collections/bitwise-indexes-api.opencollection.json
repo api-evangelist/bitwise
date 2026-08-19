@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bitwise ETFs Indexes API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Indexes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List indexes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bitwiseinvestments.com/api/v1/indexes"
+          },
+          "docs": "Returns metadata about available indexes, including their names, inception dates, descriptions, and constituent assets."
+        },
+        {
+          "info": {
+            "name": "Get index history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bitwiseinvestments.com/api/v1/indexes/:indexName/history",
+            "params": [
+              {
+                "name": "indexName",
+                "value": "",
+                "type": "path",
+                "description": "Index identifier (e.g. DEFI)."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Earliest date to include (YYYY-MM-DD)."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Latest date to include (YYYY-MM-DD)."
+              },
+              {
+                "name": "excludeBacktested",
+                "value": "",
+                "type": "query",
+                "description": "Exclude backtested values from the series."
+              }
+            ]
+          },
+          "docs": "Returns historical daily index values. Each element contains a date and the corresponding index value. By default all values are included from 2017-01-01 (or index inception), including backtested data. Results can be filtered by date range and can exclude backtested values."
+        },
+        {
+          "info": {
+            "name": "Get index constituents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bitwiseinvestments.com/api/v1/indexes/:indexName/constituents",
+            "params": [
+              {
+                "name": "indexName",
+                "value": "",
+                "type": "path",
+                "description": "Index identifier (e.g. DEFI)."
+              },
+              {
+                "name": "timestamp",
+                "value": "",
+                "type": "query",
+                "description": "Point-in-time to retrieve constituents for."
+              }
+            ]
+          },
+          "docs": "Returns current and past index information including index value and constituent assets with their prices, supplies, and weights. A timestamp may be supplied to retrieve data from a particular point in time; omit it to receive the most recent available data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

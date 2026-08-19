@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bitwise ETFs API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ETFs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List ETFs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bitwiseinvestments.com/api/v1/etfs"
+          },
+          "docs": "Returns a list of all supported ETFs."
+        },
+        {
+          "info": {
+            "name": "Get ETF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bitwiseinvestments.com/api/v1/etf/:etfName",
+            "params": [
+              {
+                "name": "etfName",
+                "value": "",
+                "type": "path",
+                "description": "ETF ticker symbol (e.g. BITB)."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "As-of date (YYYY-MM-DD); defaults to today."
+              }
+            ]
+          },
+          "docs": "Retrieves ETF data for a specified fund symbol and optional date. If no date is provided it defaults to the current date and returns comprehensive fund information including pricing, holdings, and metadata."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

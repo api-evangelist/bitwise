@@ -1,29 +1,34 @@
 generated: '2026-07-18'
 method: derived
 status: candidate
-source: >-
-  Derived from openapi/bitwise-openapi.yml operations. No official Bitwise MCP
-  server was found (searched docs, npm @modelcontextprotocol, MCP registries).
+source: Derived from openapi/bitwise-openapi.yml operations. No official Bitwise MCP server was found
+  (searched docs, npm @modelcontextprotocol, MCP registries).
 server:
   name: bitwise
   transport: http
   url: null
 tools:
-  - name: list_indexes
-    description: List available Bitwise indexes and their metadata.
-    source_operation: openapi/bitwise-openapi.yml#listIndexes
-  - name: get_index_history
-    description: Get historical daily values for an index.
-    source_operation: openapi/bitwise-openapi.yml#getIndexHistory
-  - name: get_index_constituents
-    description: Get an index's constituent assets with prices, supplies, and weights.
-    source_operation: openapi/bitwise-openapi.yml#getIndexConstituents
-  - name: get_fund_data
-    description: Get market/NAV/AUM/holdings data for a fund.
-    source_operation: openapi/bitwise-openapi.yml#getFundData
-  - name: list_etfs
-    description: List all supported Bitwise ETFs.
-    source_operation: openapi/bitwise-openapi.yml#listEtfs
-  - name: get_etf
-    description: Get ETF data for a ticker symbol and optional date.
-    source_operation: openapi/bitwise-openapi.yml#getEtf
+- name: list_indexes
+  description: List available Bitwise indexes and their metadata.
+  source_operation: openapi/bitwise-openapi.yml#listIndexes
+- name: get_index_history
+  description: Get historical daily values for an index.
+  source_operation: openapi/bitwise-openapi.yml#getIndexHistory
+- name: get_index_constituents
+  description: Get an index's constituent assets with prices, supplies, and weights.
+  source_operation: openapi/bitwise-openapi.yml#getIndexConstituents
+- name: get_fund_data
+  description: Get market/NAV/AUM/holdings data for a fund.
+  source_operation: openapi/bitwise-openapi.yml#getFundData
+- name: list_etfs
+  description: List all supported Bitwise ETFs.
+  source_operation: openapi/bitwise-openapi.yml#listEtfs
+- name: get_etf
+  description: Get ETF data for a ticker symbol and optional date.
+  source_operation: openapi/bitwise-openapi.yml#getEtf
+deployment:
+  mode: none
+  verified: derived
+  tools: 6
+  checked: '2026-08-12'
+  source: catalog MCP census

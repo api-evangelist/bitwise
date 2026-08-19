@@ -1,0 +1,552 @@
+{
+  "item": [
+    {
+      "id": "bd4c2ae8-b52a-4001-b7ae-ff7efbe40b7b",
+      "name": "Indexes",
+      "description": {
+        "content": "Bitwise crypto index metadata, history, and constituents.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46a424ea-1264-4195-9015-a71f9cf8d9ca",
+          "name": "List indexes",
+          "request": {
+            "name": "List indexes",
+            "description": {
+              "content": "Returns metadata about available indexes, including their names, inception dates, descriptions, and constituent assets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "indexes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6c94d97-b663-4b6e-af77-af7b52ed8219",
+              "name": "Index metadata list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "indexes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"inceptionDate\": \"1983-03-14\",\n    \"description\": \"string\",\n    \"constituents\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"inceptionDate\": \"1971-06-08\",\n    \"description\": \"string\",\n    \"constituents\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "679889c6-86d0-4679-8806-8b9f8fcdd06a",
+              "name": "Authentication credentials were missing or incorrect.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "indexes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication credentials were missing or incorrect.\",\n  \"id\": \"unauthorized_request\",\n  \"errors\": [\n    {\n      \"field\": \"apiKey\",\n      \"message\": \"Invalid or missing API key\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf92ab4d-00c8-4977-a4d4-6bc44c60db79",
+          "name": "Get index history",
+          "request": {
+            "name": "Get index history",
+            "description": {
+              "content": "Returns historical daily index values. Each element contains a date and the corresponding index value. By default all values are included from 2017-01-01 (or index inception), including backtested data. Results can be filtered by date range and can exclude backtested values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "indexes",
+                ":indexName",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "Earliest date to include (YYYY-MM-DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "Latest date to include (YYYY-MM-DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeBacktested",
+                  "value": "<boolean>",
+                  "description": "Exclude backtested values from the series."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indexName",
+                  "description": "(Required) Index identifier (e.g. DEFI)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5052fab6-52e3-4cb3-b392-309f89fcb447",
+              "name": "Daily index value series.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "indexes",
+                    ":indexName",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "excludeBacktested",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) Index identifier (e.g. DEFI)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"1976-01-14\",\n    \"value\": 3231.717579304071\n  },\n  {\n    \"date\": \"1977-04-21\",\n    \"value\": 7327.456364875769\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "495da910-1932-4a3b-b1b1-bef92053fcd4",
+              "name": "Authentication credentials were missing or incorrect.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "indexes",
+                    ":indexName",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "excludeBacktested",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) Index identifier (e.g. DEFI)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication credentials were missing or incorrect.\",\n  \"id\": \"unauthorized_request\",\n  \"errors\": [\n    {\n      \"field\": \"apiKey\",\n      \"message\": \"Invalid or missing API key\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79c2f044-12cb-439d-a1be-71e9c51f1f75",
+          "name": "Get index constituents",
+          "request": {
+            "name": "Get index constituents",
+            "description": {
+              "content": "Returns current and past index information including index value and constituent assets with their prices, supplies, and weights. A timestamp may be supplied to retrieve data from a particular point in time; omit it to receive the most recent available data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "indexes",
+                ":indexName",
+                "constituents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<dateTime>",
+                  "description": "Point-in-time to retrieve constituents for."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indexName",
+                  "description": "(Required) Index identifier (e.g. DEFI)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2070fe48-c821-476a-8cd2-8d3b386f610c",
+              "name": "Index value plus weighted constituents.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "indexes",
+                    ":indexName",
+                    "constituents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) Index identifier (e.g. DEFI)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": 8458.19277815173,\n  \"timestamp\": \"2000-07-01T11:18:44.676Z\",\n  \"constituents\": [\n    {\n      \"asset\": \"string\",\n      \"price\": 7166.007438928062,\n      \"supply\": 781.4124275366507,\n      \"weight\": 9067.98647338144\n    },\n    {\n      \"asset\": \"string\",\n      \"price\": 8811.829579820753,\n      \"supply\": 1771.7250433976283,\n      \"weight\": 1875.5166165474202\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3a2ee1c-e50b-4a09-8dc2-246a2214f511",
+              "name": "Authentication credentials were missing or incorrect.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "indexes",
+                    ":indexName",
+                    "constituents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indexName",
+                      "description": "(Required) Index identifier (e.g. DEFI)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication credentials were missing or incorrect.\",\n  \"id\": \"unauthorized_request\",\n  \"errors\": [\n    {\n      \"field\": \"apiKey\",\n      \"message\": \"Invalid or missing API key\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.bitwiseinvestments.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c673f334-3828-4365-aeb5-b3a417c7480d",
+    "name": "Bitwise ETFs Indexes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only market-data API for Bitwise indexes, ETFs, and fund data. Returns index metadata, historical daily index values, index constituents with prices/supplies/weights, per-fund data (market price, NAV, AUM, holdings, crypto-per-share, performance), and ETF listings and details. Endpoints and the authentication model are derived from the provider's published Postman collection at https://developers.bitwiseinvestments.com/; base host and error envelope were confirmed by live probe of https://api.bitwiseinvestments.com.\n\nContact Support:\n Name: Bitwise API Support\n Email: api@bitwiseinvestments.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -44,6 +44,15 @@ tags:
 - Market Data
 - Index Funds
 - ETFs
+- Financial-Services
+tags_raw:
+- Company
+- Fintech
+- Cryptocurrency
+- Asset Management
+- Market Data
+- Index Funds
+- ETFs
 - Financial Services
 apis:
 - aid: bitwise:bitwise-etfs-api

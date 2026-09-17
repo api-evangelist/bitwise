@@ -68,30 +68,6 @@ tags_raw:
 - ETFs
 - Financial Services
 apis:
-- aid: bitwise:bitwise-etfs-api
-  name: Bitwise ETFs API
-  description: Bitwise exchange-traded fund listings and details.
-  humanURL: https://developers.bitwiseinvestments.com/
-  baseURL: https://api.bitwiseinvestments.com
-  tags:
-  - ETFs
-  properties:
-  - type: OpenAPI
-    url: openapi/bitwise-etfs-api-openapi.yml
-  - type: Authentication
-    url: authentication/bitwise-authentication.yml
-  - type: ErrorCatalog
-    url: errors/bitwise-problem-types.yml
-  - type: Conventions
-    url: conventions/bitwise-conventions.yml
-  - type: DataModel
-    url: data-model/bitwise-data-model.yml
-  - type: Conformance
-    url: conformance/bitwise-conformance.yml
-  - type: Lifecycle
-    url: lifecycle/bitwise-lifecycle.yml
-  - type: Postman
-    url: https://developers.bitwiseinvestments.com/
 - aid: bitwise:bitwise-funds-api
   name: Bitwise Funds API
   description: Per-fund market data (NAV, AUM, holdings, performance).
@@ -126,6 +102,30 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/bitwise-indexes-api-openapi.yml
+  - type: Authentication
+    url: authentication/bitwise-authentication.yml
+  - type: ErrorCatalog
+    url: errors/bitwise-problem-types.yml
+  - type: Conventions
+    url: conventions/bitwise-conventions.yml
+  - type: DataModel
+    url: data-model/bitwise-data-model.yml
+  - type: Conformance
+    url: conformance/bitwise-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/bitwise-lifecycle.yml
+  - type: Postman
+    url: https://developers.bitwiseinvestments.com/
+- aid: bitwise:bitwise-etfs-api
+  name: Bitwise ET Fs API
+  description: Bitwise exchange-traded fund listings and details.
+  humanURL: https://developers.bitwiseinvestments.com/
+  baseURL: https://api.bitwiseinvestments.com
+  tags:
+  - ETFs
+  properties:
+  - type: OpenAPI
+    url: openapi/bitwise-etfs-api-openapi.yml
   - type: Authentication
     url: authentication/bitwise-authentication.yml
   - type: ErrorCatalog

@@ -1,30 +1,31 @@
-# Kin Score artifact — bitwise — 2026-08-17T064519
+# Kin Score artifact — bitwise — 2026-09-17T211151
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: bitwise
-  schema_version: 0.11.0
-  scored_at: '2026-08-17'
-  run_ts: 2026-08-17T064519
-  composite: 39.1
+  schema_version: 0.22.0
+  scored_at: '2026-09-17'
+  run_ts: 2026-09-17T211151
+  composite: 32.3
   band: thin
   facets:
-    discoverability: 81.5
-    contract_quality: 62.7
-    governance: 11.5
+    discoverability: 75.9
+    contract_quality: 14.3
+    contract_governance: 4.5
     operational_transparency: 0.0
-    developer_ergonomics: 49.5
-    commercial_clarity: 34.2
+    developer_ergonomics: 63.7
+    access_clarity: 34.2
   agent_readiness:
-    score: 22.3
+    score: 24.4
     band: agent-aware
     dimensions:
       spec_presence: true
       agentic_access: derived
-      mcp_server: derived
-      auth_clarity: false
-      idempotency: false
-      error_semantics: false
+      reversibility_documented: na
+      mcp_server: false
+      auth_clarity: bearer
+      idempotency: na
+      error_semantics: documented
       openapi_examples: false
       rate_limit_signal: false
       event_surface_described: false
@@ -32,12 +33,16 @@ kin_score:
       well_known_catalog: false
       consent_identity: false
       agent_card: false
-      dry_run_mode: false
+      dry_run_mode: na
+      delegated_identity: false
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
   regulatory:
     applies: true
     regime: Securities & Market Data
     regime_id: securities_market_data
-    score: 23.3
+    score: 41.7
     matched_via: tags
   provenance:
     mcp: derived
@@ -46,6 +51,6 @@ kin_score:
     conformance: derived
     contracts:
       total: 3
-      derived: 0
-      coverage: 0.0
+      derived: 3
+      coverage: 100.0
       callable: 100.0

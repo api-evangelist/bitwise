@@ -74,6 +74,8 @@ apis:
   humanURL: https://developers.bitwiseinvestments.com/
   baseURL: https://api.bitwiseinvestments.com
   tags:
+  - Fund
+  tags_raw:
   - Funds
   properties:
   - type: OpenAPI
@@ -98,6 +100,8 @@ apis:
   humanURL: https://developers.bitwiseinvestments.com/
   baseURL: https://api.bitwiseinvestments.com
   tags:
+  - Index
+  tags_raw:
   - Indexes
   properties:
   - type: OpenAPI

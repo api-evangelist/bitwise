@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Bitwise ETFs Indexes API
+  title: Bitwise Indexes API
   version: v1
-  description: Read-only market-data API for Bitwise indexes, ETFs, and fund data. Returns index metadata, historical daily index values, index constituents with prices/supplies/weights, per-fund data (market price, NAV, AUM, holdings, crypto-per-share, performance), and ETF listings and details. Endpoints and the authentication model are derived from the provider's published Postman collection at https://developers.bitwiseinvestments.com/; base host and error envelope were confirmed by live probe of https://api.bitwiseinvestments.com.
+  description: Read-only market-data API for Bitwise indexes, ETFs, and fund data.
   contact:
     name: Bitwise API Support
     email: api@bitwiseinvestments.com
@@ -113,7 +113,35 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Authentication credentials were missing or incorrect.
+            id: unauthorized_request
+            errors:
+            - field: apiKey
+              message: Invalid or missing API key
   schemas:
+    Index:
+      type: object
+      description: Index metadata (shape not published; representative fields).
+      properties:
+        name:
+          type: string
+        inceptionDate:
+          type: string
+          format: date
+        description:
+          type: string
+        constituents:
+          type: array
+          items:
+            type: string
     IndexConstituents:
       type: object
       properties:
@@ -135,21 +163,6 @@ components:
                 type: number
               weight:
                 type: number
-    Index:
-      type: object
-      description: Index metadata (shape not published; representative fields).
-      properties:
-        name:
-          type: string
-        inceptionDate:
-          type: string
-          format: date
-        description:
-          type: string
-        constituents:
-          type: array
-          items:
-            type: string
     IndexHistoryPoint:
       type: object
       properties:
@@ -176,19 +189,6 @@ components:
                 type: string
               message:
                 type: string
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or incorrect.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Authentication credentials were missing or incorrect.
-            id: unauthorized_request
-            errors:
-            - field: apiKey
-              message: Invalid or missing API key
   securitySchemes:
     apiKeyAuth:
       type: apiKey

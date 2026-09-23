@@ -1,18 +1,27 @@
 {
   "provider": "bitwise",
   "sources": [
-    "bitwise-etfs-api-openapi.yml",
-    "bitwise-funds-api-openapi.yml",
-    "bitwise-indexes-api-openapi.yml"
+    "_original/bitwise-openapi.yml"
   ],
   "outputs": [
     "bitwise-etfs-api-openapi.yml",
     "bitwise-funds-api-openapi.yml",
     "bitwise-indexes-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "bitwise-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: bitwise-et-fs-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 3 total)"
+  ],
+  "skipped": [
+    "bitwise-et-fs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bitwise-funds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bitwise-indexes-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

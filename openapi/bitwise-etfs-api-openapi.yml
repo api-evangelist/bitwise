@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bitwise ET Fs API
+  title: Bitwise ETFs API
   version: v1
   description: Read-only market-data API for Bitwise indexes, ETFs, and fund data.
   contact:

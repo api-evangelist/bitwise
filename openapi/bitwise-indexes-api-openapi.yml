@@ -113,19 +113,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or incorrect.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Authentication credentials were missing or incorrect.
-            id: unauthorized_request
-            errors:
-            - field: apiKey
-              message: Invalid or missing API key
   schemas:
     Index:
       type: object
@@ -142,6 +129,14 @@ components:
           type: array
           items:
             type: string
+    IndexHistoryPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        value:
+          type: number
     IndexConstituents:
       type: object
       properties:
@@ -163,14 +158,6 @@ components:
                 type: number
               weight:
                 type: number
-    IndexHistoryPoint:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-        value:
-          type: number
     Error:
       type: object
       description: Bitwise error envelope (not RFC 9457).
@@ -189,6 +176,19 @@ components:
                 type: string
               message:
                 type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Authentication credentials were missing or incorrect.
+            id: unauthorized_request
+            errors:
+            - field: apiKey
+              message: Invalid or missing API key
   securitySchemes:
     apiKeyAuth:
       type: apiKey

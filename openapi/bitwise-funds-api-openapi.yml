@@ -42,20 +42,24 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or incorrect.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Authentication credentials were missing or incorrect.
-            id: unauthorized_request
-            errors:
-            - field: apiKey
-              message: Invalid or missing API key
   schemas:
+    FundData:
+      type: object
+      properties:
+        marketPrice:
+          type: number
+        intraDayNav:
+          type: number
+        previousDayNav:
+          type: number
+        aum:
+          type: number
+        priceChange:
+          type: number
+        sharesOutstanding:
+          type: number
+        cryptoPerShare:
+          type: number
     Error:
       type: object
       description: Bitwise error envelope (not RFC 9457).
@@ -74,23 +78,19 @@ components:
                 type: string
               message:
                 type: string
-    FundData:
-      type: object
-      properties:
-        marketPrice:
-          type: number
-        intraDayNav:
-          type: number
-        previousDayNav:
-          type: number
-        aum:
-          type: number
-        priceChange:
-          type: number
-        sharesOutstanding:
-          type: number
-        cryptoPerShare:
-          type: number
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Authentication credentials were missing or incorrect.
+            id: unauthorized_request
+            errors:
+            - field: apiKey
+              message: Invalid or missing API key
   securitySchemes:
     apiKeyAuth:
       type: apiKey

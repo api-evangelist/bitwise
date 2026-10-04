@@ -81,6 +81,16 @@ components:
             - field: apiKey
               message: Invalid or missing API key
   schemas:
+    Etf:
+      type: object
+      properties:
+        symbol:
+          type: string
+        name:
+          type: string
+        date:
+          type: string
+          format: date
     Error:
       type: object
       description: Bitwise error envelope (not RFC 9457).
@@ -99,16 +109,6 @@ components:
                 type: string
               message:
                 type: string
-    Etf:
-      type: object
-      properties:
-        symbol:
-          type: string
-        name:
-          type: string
-        date:
-          type: string
-          format: date
   securitySchemes:
     apiKeyAuth:
       type: apiKey

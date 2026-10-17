@@ -114,6 +114,32 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    IndexHistoryPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        value:
+          type: number
+    Error:
+      type: object
+      description: Bitwise error envelope (not RFC 9457).
+      properties:
+        message:
+          type: string
+        id:
+          type: string
+          description: Machine-readable error identifier.
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
     IndexConstituents:
       type: object
       properties:
@@ -150,32 +176,6 @@ components:
           type: array
           items:
             type: string
-    IndexHistoryPoint:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-        value:
-          type: number
-    Error:
-      type: object
-      description: Bitwise error envelope (not RFC 9457).
-      properties:
-        message:
-          type: string
-        id:
-          type: string
-          description: Machine-readable error identifier.
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
   responses:
     Unauthorized:
       description: Authentication credentials were missing or incorrect.
